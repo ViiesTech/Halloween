@@ -1,0 +1,157 @@
+import {StyleSheet} from 'react-native';
+import {Color} from '../assets/Utils/Colors';
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from '../assets/Responsive_Dimensions';
+
+export const styles = StyleSheet.create({
+  welcomeTextStyle: {
+    color: Color.white,
+    fontSize: responsiveFontSize(3.8),
+  },
+  inputStyle: {
+    borderColor: Color.white,
+    alignItems: 'center',
+    borderWidth: 2,
+    borderRadius: responsiveHeight(3.5),
+    color: Color.white,
+    width: responsiveWidth(85),
+    padding: responsiveHeight(2),
+    height: responsiveHeight(6.5),
+  },
+  listingCard: {
+    padding: responsiveHeight(2),
+    width: '100%',
+    backgroundColor: Color.white,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 8,
+    borderRadius: 8,
+    borderBottomRightRadius: 0,
+  },
+
+  locationContainer: {
+    height: '100%',
+    paddingHorizontal: responsiveWidth(4),
+    backgroundColor: Color.themeColor,
+    alignItems: 'center',
+    borderTopLeftRadius: responsiveHeight(2),
+    borderTopRightRadius: responsiveHeight(2.2),
+    borderBottomRightRadius: responsiveHeight(2.5),
+    borderBottomLeftRadius: 0,
+  },
+
+  timeContainer: {
+    height: '100%',
+    paddingHorizontal: responsiveWidth(3),
+    backgroundColor: Color.themeColor,
+    alignItems: 'center',
+    borderTopLeftRadius: responsiveHeight(2),
+    borderTopRightRadius: responsiveHeight(2.2),
+    borderBottomRightRadius: responsiveHeight(2.5),
+    borderBottomLeftRadius: 0,
+  },
+  timeContainer2: {
+    height: '100%',
+    paddingHorizontal: responsiveWidth(3.5),
+    backgroundColor: Color.themeColor,
+    alignItems: 'center',
+    borderTopLeftRadius: responsiveHeight(2),
+    borderTopRightRadius: responsiveHeight(2.1),
+    borderBottomRightRadius: responsiveHeight(2.1),
+    borderBottomLeftRadius: 0,
+  },
+  listingText: {
+    color: Color.textLight,
+    fontSize: responsiveFontSize(1.5),
+    marginTop: responsiveHeight(0.7),
+    color: Color.textLight,
+    fontSize: responsiveFontSize(1.5),
+    marginTop: responsiveHeight(0.7),
+  },
+  listingSemiHeading: {
+    color: Color.black,
+    fontSize: responsiveFontSize(1.8),
+    fontWeight: '400',
+    color: Color.black,
+    fontSize: responsiveFontSize(1.8),
+    fontWeight: '400',
+  },
+  detailsHeading: {
+    color: Color.themeColor,
+    fontSize: responsiveFontSize(1.7),
+    fontWeight: '500',
+  },
+  parentContainer: {
+    flex: 1,
+    backgroundColor: Color.white,
+  },
+  parentScrollContainer: {
+    flexGrow: 1,
+    backgroundColor: Color.white,
+  },
+  detailsText: {
+    color: Color.textDark,
+    fontSize: responsiveFontSize(1.7),
+  },
+  searchInputContainer: {
+    position: 'absolute',
+    marginTop: responsiveHeight(4),
+    zIndex: 10,
+    flexDirection: 'row',
+    gap: responsiveHeight(1.5),
+    alignSelf: 'center',
+  },
+  headerIconStyle: {
+    borderWidth: 1,
+    backgroundColor: Color.white,
+    borderColor: Color.themeColor,
+    borderRadius: responsiveHeight(3.4),
+    width: responsiveWidth(9.4),
+    height: responsiveHeight(4.3),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  placeHolderStyle1: {
+    color: Color.placeHolderTxt1,
+    fontSize: responsiveFontSize(1.8),
+  },
+  orText: {
+    color: Color.placeHolderTxt1,
+    alignSelf: 'center',
+    fontSize: responsiveFontSize(2),
+    marginVertical: responsiveHeight(3),
+  },
+  btnStyle: {
+    backgroundColor: Color.themeColor,
+    borderRadius: responsiveHeight(3.5),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnTxt: {
+    color: Color.white,
+    fontSize: responsiveFontSize(1.9),
+  },
+  socialButtonStyle: {
+    width: responsiveWidth(85),
+    borderRadius: responsiveHeight(3.3),
+    gap: responsiveHeight(3),
+    paddingHorizontal: 20,
+    borderColor: Color.white,
+    borderWidth: 2,
+    height: responsiveHeight(7),
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  socialBtnText: {
+    color: Color.white,
+    fontSize: responsiveFontSize(1.9),
+  },
+});

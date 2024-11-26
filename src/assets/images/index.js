@@ -1,0 +1,16 @@
+export const images = {
+  bgImage: require('./bgImage.png'),
+  google: require('./google.png'),
+  facebook: require('./facebook.png'),
+  halloween: require('./halloween.png'),
+  halloweenSmall: require('./halloween-s.png'),
+  clock: require('./clock.png'),
+  profile: require('./profile.png'),
+  profile2: require('./profile2.png'),
+  profile3: require('./profile3.png'),
+  profile4: require('./profile4.png'),
+  post1: require('./post1.png'),
+  post2: require('./post2.png'),
+  map: require('./map.png'),
+  map2: require('./map2.png'),
+};
