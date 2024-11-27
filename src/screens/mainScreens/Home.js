@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {Image, View} from 'react-native';
 import React from 'react';
 import Header from '../../Components/Header';
 import MapView, {Marker} from 'react-native-maps';
@@ -46,13 +46,16 @@ const Home = ({navigation}) => {
   ];
   return (
     <View style={{flex: 1}}>
-      <Header />
+      <Header showBackIcon={true} handleBackPress={()=>navigation.goBack()}/>
       <View style={{flex: 1}}>
+        <View>
+          <Image style={{height:'100%',width:'100%'}}   source={images.mapHome}/>
+        </View>
         <View style={styles.searchInputContainer}>
           <SearchInput />
           <SearchButton />
         </View>
-        <MapView
+        {/* <MapView
           style={{flex: 1}}
           initialRegion={{
             latitude: 37.78825,
@@ -71,7 +74,7 @@ const Home = ({navigation}) => {
               image={place.image}
             />
           ))}{' '}
-        </MapView>
+        </MapView> */}
       </View>
     </View>
   );

@@ -42,26 +42,11 @@ const ScaryStories = () => {
     },
   ];
   return (
-    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.parentScrollContainer}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.parentScrollContainer}>
       <Header notificationIcon={true} />
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingVertical: responsiveHeight(1.5),
-          paddingHorizontal: responsiveWidth(5),
-          backgroundColor: Color.white,
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          elevation: 5,
-          marginBottom:20
-        }}>
+      <View style={styles.profileHeaderContainer}>
         <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
           <TouchableOpacity>
             <Image
@@ -94,23 +79,13 @@ const ScaryStories = () => {
                 gap: 20,
                 marginTop: 5,
               }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: responsiveHeight(1.5),
-                }}>
+              <View style={styles.iconTxtContainer}>
                 <MaterialIcons name="photo" size={20} color="#000" />
                 <Text style={{color: Color.black, fontWeight: '400'}}>
                   Photos
                 </Text>
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: responsiveHeight(1.5),
-                }}>
+              <View style={styles.iconTxtContainer}>
                 <FontAwesome name="map-marker" size={20} color="#000" />
                 <Text style={{color: Color.black, fontWeight: '400'}}>
                   Location
@@ -119,28 +94,13 @@ const ScaryStories = () => {
             </View>
           </View>
         </View>
-        <TouchableOpacity
-          style={{
-            paddingHorizontal: responsiveWidth(3.5),
-            backgroundColor: Color.themeColor,
-            alignItems: 'center',
-            height: responsiveHeight(5.4),
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderTopLeftRadius: responsiveHeight(2),
-            borderTopRightRadius: responsiveHeight(2.1),
-            borderBottomRightRadius: responsiveHeight(2.1),
-            borderBottomLeftRadius: 0,
-          }}>
+        <TouchableOpacity style={styles.goContainer}>
           <Ionicons name="chevron-forward" size={25} color={Color.white} />
         </TouchableOpacity>
       </View>
-    {data.map((area)=>{
-      return(
-        <Post data={area}/>
-      )
-    })}
-     
+      {data.map(area => {
+        return <Post data={area} />;
+      })}
     </ScrollView>
   );
 };

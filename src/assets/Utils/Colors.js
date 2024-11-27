@@ -12,4 +12,5 @@ export const Color = {
   placeHolderTxt2: '#8D8D8D',
   justNowTxt: '#AFAFAF',
   hrColor: '#D2D2D2',
+  postBorderColor:'#D4D4D4'
 };

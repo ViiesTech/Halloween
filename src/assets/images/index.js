@@ -11,6 +11,7 @@ export const images = {
   profile4: require('./profile4.png'),
   post1: require('./post1.png'),
   post2: require('./post2.png'),
+  mapHome: require('./mapHome.png'),
   map: require('./map.png'),
   map2: require('./map2.png'),
 };

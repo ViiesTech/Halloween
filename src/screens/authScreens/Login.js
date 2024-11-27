@@ -1,4 +1,11 @@
-import {View, Text, ImageBackground, TextInput, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import {images} from '../../assets/images';
 import {styles} from '../../Styles';
@@ -50,15 +57,17 @@ const Login = ({navigation}) => {
             handlePress={() => navigation.navigate('MainStack')}
             title={'LOGIN'}
           />
-          <Text
-            style={{
-              color: Color.white,
-              alignSelf: 'center',
-              fontSize: responsiveFontSize(1.8),
-            }}>
-            Don't have a account?{' '}
-            <Text style={{color: Color.themeOrange}}>Sign Up</Text>
-          </Text>
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: Color.white,
+                alignSelf: 'center',
+                fontSize: responsiveFontSize(1.8),
+              }}>
+              Don't have an account?{' '}
+              <Text style={{color: Color.themeOrange}}>Sign Up</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </ImageBackground>

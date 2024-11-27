@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import React from 'react';
 import {Color} from '../../assets/Utils/Colors';
 import Header from '../../Components/Header';
@@ -13,8 +13,13 @@ import {styles} from '../../Styles';
 
 const ViewDetails = ({navigation}) => {
   return (
-    <View style={{flex: 1, backgroundColor: Color.white}}>
-      <Header />
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={[
+        styles.parentScrollContainer,
+        {paddingBottom: 20},
+      ]}>
+      <Header showBackIcon={true} handleBackPress={() => navigation.goBack()} />
       <Hr />
       <View style={{paddingHorizontal: responsiveWidth(5.7)}}>
         <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
@@ -69,16 +74,16 @@ const ViewDetails = ({navigation}) => {
             style={[styles.detailsHeading, {marginTop: responsiveHeight(3)}]}>
             Location
           </Text>
-          <TouchableOpacity onPress={()=>navigation.navigate('Home')}>
-          <Image
-            source={images.map}
-            resizeMode="contain"
-            style={{height: responsiveHeight(20), width: '100%'}}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <Image
+              source={images.map}
+              resizeMode="contain"
+              style={{height: responsiveHeight(20), width: '100%'}}
+            />
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

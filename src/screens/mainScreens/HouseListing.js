@@ -3,7 +3,7 @@ import React from 'react';
 import {Color} from '../../assets/Utils/Colors';
 import Header from '../../Components/Header';
 import Listings from '../../Components/Listings';
-import {responsiveHeight, responsiveWidth} from '../../assets/Responsive_Dimensions';
+import {responsiveHeight} from '../../assets/Responsive_Dimensions';
 import Hr from '../../Components/Hr';
 
 const HouseListing = ({navigation}) => {
@@ -47,10 +47,9 @@ const HouseListing = ({navigation}) => {
       contentContainerStyle={{
         flexGrow: 1,
         backgroundColor: Color.white,
-        // gap: responsiveHeight(2),
         paddingBottom: responsiveHeight(2),
       }}>
-      <Header />
+      <Header/>
       <Hr/>
       {data.map(area => {
         return <Listings buttonPressHandler={()=>navigation.navigate('ViewDetails')} data={area}/>;
