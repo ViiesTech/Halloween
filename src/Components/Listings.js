@@ -4,8 +4,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Button from './Button';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from '../assets/Responsive_Dimensions';
 import { Color } from '../assets/Utils/Colors';
-import { images } from '../assets/images';
 import { styles } from '../Styles';
+import IconContainer from './IconContainer';
 
 const Listings = ({data,buttonPressHandler}) => {
   return (
@@ -47,16 +47,7 @@ const Listings = ({data,buttonPressHandler}) => {
               gap: responsiveHeight(1.5),
               marginTop: responsiveHeight(2.5),
             }}>
-            <View
-              style={styles.locationContainer}>
-              <View style={{flex: 1, justifyContent: 'center'}}>
-                <FontAwesome
-                  name="map-marker"
-                  size={20}
-                  color={Color.white}
-                />
-              </View>
-            </View>
+            <IconContainer styleName={'locationContainer'} Icon={FontAwesome} iconName={'map-marker'} iconSize={20}/>
             <View>
               <Text
                 style={styles.listingSemiHeading}>
@@ -88,19 +79,7 @@ const Listings = ({data,buttonPressHandler}) => {
               gap: responsiveHeight(1),
               marginTop: responsiveHeight(2),
             }}>
-            <View
-              style={styles.timeContainer}>
-              <View style={{flex: 1, justifyContent: 'center'}}>
-                <Image
-                  resizeMode="contain"
-                  source={images.clock}
-                  style={{
-                    height: responsiveHeight(3),
-                    width: responsiveWidth(5),
-                  }}
-                />
-              </View>
-            </View>
+            <IconContainer styleName={'timeContainer'} source={'clock'} height={3} width={5}/>
             <View>
               <Text
                 style={styles.listingSemiHeading}>

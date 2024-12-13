@@ -1,18 +1,10 @@
-import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import React from 'react';
 import {styles} from '../../Styles';
 import Header from '../../Components/Header';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {images} from '../../assets/images';
-import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
-} from '../../assets/Responsive_Dimensions';
-import {Color} from '../../assets/Utils/Colors';
 import Post from '../../Components/Post';
+import ProfileHeader from '../../Components/ProfileHeader';
 
 const ScaryStories = () => {
   const data = [
@@ -46,58 +38,7 @@ const ScaryStories = () => {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.parentScrollContainer}>
       <Header notificationIcon={true} />
-      <View style={styles.profileHeaderContainer}>
-        <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
-          <TouchableOpacity>
-            <Image
-              source={images.profile2}
-              style={{height: responsiveHeight(10), width: responsiveWidth(20)}}
-            />
-          </TouchableOpacity>
-          <View>
-            <Text
-              style={{
-                color: Color.black,
-                fontWeight: '500',
-                fontSize: responsiveFontSize(2.2),
-              }}>
-              John Doe
-            </Text>
-            <Text
-              style={{
-                color: Color.black,
-                fontWeight: '400',
-                marginTop: 5,
-                width: responsiveWidth(50),
-              }}>
-              What do you want to talk about?
-            </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 20,
-                marginTop: 5,
-              }}>
-              <View style={styles.iconTxtContainer}>
-                <MaterialIcons name="photo" size={20} color="#000" />
-                <Text style={{color: Color.black, fontWeight: '400'}}>
-                  Photos
-                </Text>
-              </View>
-              <View style={styles.iconTxtContainer}>
-                <FontAwesome name="map-marker" size={20} color="#000" />
-                <Text style={{color: Color.black, fontWeight: '400'}}>
-                  Location
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <TouchableOpacity style={styles.goContainer}>
-          <Ionicons name="chevron-forward" size={25} color={Color.white} />
-        </TouchableOpacity>
-      </View>
+      <ProfileHeader />
       {data.map(area => {
         return <Post data={area} />;
       })}

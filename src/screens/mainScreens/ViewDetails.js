@@ -10,6 +10,7 @@ import {
   responsiveWidth,
 } from '../../assets/Responsive_Dimensions';
 import {styles} from '../../Styles';
+import IconContainer from '../../Components/IconContainer';
 
 const ViewDetails = ({navigation}) => {
   return (
@@ -52,19 +53,8 @@ const ViewDetails = ({navigation}) => {
             gap: responsiveHeight(1),
             marginTop: responsiveHeight(3),
           }}>
-          <View style={styles.timeContainer2}>
-            <View style={{flex: 1, justifyContent: 'center'}}>
-              <Image
-                resizeMode="contain"
-                source={images.clock}
-                style={{
-                  height: responsiveHeight(3),
-                  width: responsiveWidth(5),
-                }}
-              />
-            </View>
-          </View>
-          <View>
+            <IconContainer styleName={'timeContainer2'} source={'clock'} height={3} width={5}/>
+            <View>
             <Text style={styles.listingSemiHeading}>Availability Time:</Text>
             <Text style={styles.listingText}>10:00 AM - 06:00 PM</Text>
           </View>

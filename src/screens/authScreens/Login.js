@@ -2,7 +2,6 @@ import {
   View,
   Text,
   ImageBackground,
-  TextInput,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
@@ -13,7 +12,6 @@ import {Color} from '../../assets/Utils/Colors';
 import {
   responsiveFontSize,
   responsiveHeight,
-  responsiveWidth,
 } from '../../assets/Responsive_Dimensions';
 import Input from '../../Components/Input';
 import SocialButtons from '../../Components/SocialButtons';
@@ -54,6 +52,7 @@ const Login = ({navigation}) => {
 
         <View style={{gap: responsiveHeight(1.5)}}>
           <Button
+          bgColor={Color.loginBtnColor}
             handlePress={() => navigation.navigate('MainStack')}
             title={'LOGIN'}
           />
@@ -65,7 +64,7 @@ const Login = ({navigation}) => {
                 fontSize: responsiveFontSize(1.8),
               }}>
               Don't have an account?{' '}
-              <Text style={{color: Color.themeOrange}}>Sign Up</Text>
+              <Text style={{color: Color.loginBtnColor}}>Sign Up</Text>
             </Text>
           </TouchableOpacity>
         </View>

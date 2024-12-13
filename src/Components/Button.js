@@ -5,8 +5,9 @@ import {
   responsiveWidth,
 } from '../assets/Responsive_Dimensions';
 import {styles} from '../Styles';
+import {Color} from '../assets/Utils/Colors';
 
-const Button = ({title, handlePress, height, width, mrgnTop}) => {
+const Button = ({title, handlePress, height, width, mrgnTop, bgColor}) => {
   return (
     <TouchableOpacity
       onPress={handlePress}
@@ -16,6 +17,7 @@ const Button = ({title, handlePress, height, width, mrgnTop}) => {
           height: height ? height : responsiveHeight(6.5),
           width: width ? width : responsiveWidth(85),
           marginTop: mrgnTop,
+          backgroundColor: bgColor ? bgColor : Color.themeColor,
         },
       ]}>
       <Text style={styles.btnTxt}>{title}</Text>
