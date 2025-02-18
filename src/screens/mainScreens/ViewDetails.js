@@ -53,8 +53,13 @@ const ViewDetails = ({navigation}) => {
             gap: responsiveHeight(1),
             marginTop: responsiveHeight(3),
           }}>
-            <IconContainer styleName={'timeContainer2'} source={'clock'} height={3} width={5}/>
-            <View>
+          <IconContainer
+            styleName={'timeContainer2'}
+            source={'clock'}
+            height={3}
+            width={5}
+          />
+          <View>
             <Text style={styles.listingSemiHeading}>Availability Time:</Text>
             <Text style={styles.listingText}>10:00 AM - 06:00 PM</Text>
           </View>

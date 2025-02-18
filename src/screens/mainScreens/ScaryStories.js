@@ -37,9 +37,8 @@ const ScaryStories = () => {
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.parentScrollContainer}>
-      <Header notificationIcon={true} />
       <ProfileHeader />
-      {data.map(area => {
+      {data?.map(area => {
         return <Post data={area} />;
       })}
     </ScrollView>

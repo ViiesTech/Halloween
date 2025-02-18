@@ -1,4 +1,4 @@
-import {ScrollView, View} from 'react-native';
+import {ScrollView} from 'react-native';
 import React from 'react';
 import {Color} from '../../assets/Utils/Colors';
 import Header from '../../Components/Header';
@@ -49,10 +49,15 @@ const HouseListing = ({navigation}) => {
         backgroundColor: Color.white,
         paddingBottom: responsiveHeight(2),
       }}>
-      <Header/>
-      <Hr/>
-      {data.map(area => {
-        return <Listings buttonPressHandler={()=>navigation.navigate('ViewDetails')} data={area}/>;
+      <Header />
+      <Hr />
+      {data?.map(area => {
+        return (
+          <Listings
+            buttonPressHandler={() => navigation.navigate('ViewDetails')}
+            data={area}
+          />
+        );
       })}
     </ScrollView>
   );

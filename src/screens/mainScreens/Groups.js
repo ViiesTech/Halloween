@@ -11,7 +11,6 @@ import Button from '../../Components/Button';
 import ChooseImage from '../../Components/ChooseImage';
 
 const Groups = ({navigation}) => {
-
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -21,7 +20,7 @@ const Groups = ({navigation}) => {
       ]}>
       <Header2 handlePress={() => navigation.goBack()} title={' Add Candy'} />
       <View style={{paddingHorizontal: responsiveWidth(5.7)}}>
-        <ChooseImage/>
+        <ChooseImage />
         <Input2 label={'Candy Name'} placeholder={'Cheese Pockets'} />
         <Input2
           multiline={true}

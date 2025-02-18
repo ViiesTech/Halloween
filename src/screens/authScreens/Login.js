@@ -52,7 +52,7 @@ const Login = ({navigation}) => {
 
         <View style={{gap: responsiveHeight(1.5)}}>
           <Button
-          bgColor={Color.loginBtnColor}
+            bgColor={Color.loginBtnColor}
             handlePress={() => navigation.navigate('MainStack')}
             title={'LOGIN'}
           />
