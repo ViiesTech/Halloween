@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {Image, View} from 'react-native';
 import React from 'react';
 import Header from '../../Components/Header';

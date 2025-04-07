@@ -1,4 +1,5 @@
-import {View, Text, TextInput} from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Color} from '../assets/Utils/Colors';
 import {
@@ -11,7 +12,6 @@ const Input2 = ({placeholder, keyboardType, label, multiline, icon}) => {
   return (
     <View style={{gap: 5, marginTop: responsiveHeight(2)}}>
       <Text style={styles.placeHolderStyle2}>{label}</Text>
-
       <View
         style={{
           backgroundColor: Color.white,
@@ -47,7 +47,7 @@ const Input2 = ({placeholder, keyboardType, label, multiline, icon}) => {
           }}
         />
         {icon ? (
-          <View
+          <TouchableOpacity
             style={{
               position: 'absolute',
               right: 10,
@@ -59,7 +59,7 @@ const Input2 = ({placeholder, keyboardType, label, multiline, icon}) => {
               color={Color.themeColor}
               size={25}
             />
-          </View>
+          </TouchableOpacity>
         ) : null}
       </View>
     </View>

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {ScrollView} from 'react-native';
 import React from 'react';
 import {Color} from '../../assets/Utils/Colors';
