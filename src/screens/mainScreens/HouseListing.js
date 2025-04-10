@@ -1,13 +1,21 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ScrollView} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Color} from '../../assets/Utils/Colors';
 import Header from '../../Components/Header';
 import Listings from '../../Components/Listings';
 import {responsiveHeight} from '../../assets/Responsive_Dimensions';
 import Hr from '../../Components/Hr';
+import {useDispatch, useSelector} from 'react-redux';
+import {clearToken} from '../../redux/Slices';
 
 const HouseListing = ({navigation}) => {
+  // const dispatch = useDispatch();
+  // const {token} = useSelector(state => state.user);
+  // console.log('token', token);
+  // useEffect(() => {
+  //   dispatch(clearToken());
+  // }, []);
   const data = [
     {
       id: 1,

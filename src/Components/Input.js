@@ -11,6 +11,7 @@ const Input = ({
   label,
   isPassword,
   showPassword,
+  onChangeText,
   handlePress,
 }) => {
   return (
@@ -18,6 +19,7 @@ const Input = ({
       <Text style={styles.placeHolderStyle1}>{label}</Text>
       <View style={{}}>
         <TextInput
+          onChangeText={e => onChangeText(e)}
           secureTextEntry={showPassword}
           keyboardType={keyboardType ? keyboardType : 'default'}
           placeholder={placeholder}

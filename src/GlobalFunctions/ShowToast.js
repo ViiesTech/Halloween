@@ -1,12 +1,8 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import Toast from 'react-native-toast-message';
 
-const ShowToast = () => {
-  return (
-    <View>
-      <Text>ShowToast</Text>
-    </View>
-  )
-}
-
-export default ShowToast
+export const ShowToast = (type, text) => {
+  return Toast.show({
+    type: type,
+    text1: text,
+  });
+};

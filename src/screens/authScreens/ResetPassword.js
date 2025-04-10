@@ -4,66 +4,53 @@ import {
   Text,
   ImageBackground,
   ScrollView,
-  TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
 import React, {useState} from 'react';
 import {images} from '../../assets/images';
 import {styles} from '../../Styles';
 import {Color} from '../../assets/Utils/Colors';
-import {
-  responsiveFontSize,
-  responsiveHeight,
-} from '../../assets/Responsive_Dimensions';
+import {responsiveHeight} from '../../assets/Responsive_Dimensions';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import {ShowToast} from '../../GlobalFunctions/ShowToast';
-import {Registeration} from '../../GlobalFunctions/Apis';
-import {setToken, setUserData} from '../../redux/Slices';
-import {useDispatch} from 'react-redux';
+import {resetPassword} from '../../GlobalFunctions/Apis';
 
-const Signup = ({navigation}) => {
+const ResetPassword = ({navigation, route}) => {
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPass, setShowConfirmPass] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useDispatch();
+  const {userId} = route?.params;
   const [form, setForm] = useState({
-    userName: '',
-    email: '',
     password: '',
     confirmPassword: '',
-    parentNumber: '',
   });
-  const {userName, email, password, confirmPassword, parentNumber} = form;
   const handleInputChange = (field, value) => {
     setForm(prev => ({...prev, [field]: value}));
   };
-  const handleRegisteration = async () => {
-    if (!userName || !email || !password || !confirmPassword || !parentNumber) {
-      ShowToast('error', 'Please fill all required fields');
+
+  const resetPassIntegration = async () => {
+    const {password, confirmPassword} = form;
+    if (!password && confirmPassword) {
+      ShowToast('error', 'Please Fill The Required Fields');
+      setIsLoading(false);
       return;
     }
     if (password !== confirmPassword) {
       ShowToast('error', 'Passwords must be the same');
+      setIsLoading(false);
       return;
     }
-
     try {
       setIsLoading(true);
-      const response = await Registeration(
-        userName,
-        email,
-        password,
-        parentNumber,
-      );
+      const response = await resetPassword(password, confirmPassword, userId);
+      console.log('response', response);
       if (response.success) {
-        ShowToast('success', 'Registeration Successful');
-        dispatch(setUserData(response.data));
-        dispatch(setToken(response.token));
+        ShowToast('success', 'Password Changed Successfully');
+        navigation.navigate('Login');
       } else {
         ShowToast('error', response.message);
       }
-      console.log('response', response);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -82,34 +69,17 @@ const Signup = ({navigation}) => {
           justifyContent: 'space-around',
         }}>
         <View>
-          <Text style={styles.welcomeTextStyle}>Welcome Back!</Text>
+          <Text style={styles.welcomeTextStyle}>Reset Your Password!</Text>
         </View>
         <View style={{marginTop: responsiveHeight(6)}}>
           <View style={{gap: 20}}>
-            <Input
-              onChangeText={text => handleInputChange('userName', text)}
-              label="Username"
-              placeholder="Enter your username"
-            />
-
-            <Input
-              onChangeText={text => handleInputChange('email', text)}
-              label="Email Address"
-              placeholder="Enter your email"
-              keyboardType="email-address"
-            />
-            <Input
-              onChangeText={text => handleInputChange('parentNumber', text)}
-              label={"Parent's Phone Number"}
-              placeholder={'e.g. (123) 456-7890'}
-            />
             <Input
               onChangeText={text => handleInputChange('password', text)}
               showPassword={showPassword}
               handlePress={() => setShowPassword(!showPassword)}
               isPassword
               label={'Password'}
-              placeholder={'Enter your password'}
+              placeholder={'Enter your new password'}
             />
             <Input
               onChangeText={text => handleInputChange('confirmPassword', text)}
@@ -134,30 +104,19 @@ const Signup = ({navigation}) => {
         <View style={{gap: responsiveHeight(1.5)}}>
           <Button
             bgColor={Color.loginBtnColor}
-            handlePress={handleRegisteration}
+            handlePress={() => resetPassIntegration()}
             title={
               isLoading ? (
                 <ActivityIndicator size={'large'} color={Color.white} />
               ) : (
-                'Signup'
+                'Reset'
               )
             }
           />
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text
-              style={{
-                color: Color.white,
-                alignSelf: 'center',
-                fontSize: responsiveFontSize(1.8),
-              }}>
-              Already have an account?{' '}
-              <Text style={{color: Color.loginBtnColor}}>Sign In</Text>
-            </Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     </ImageBackground>
   );
 };
 
-export default Signup;
+export default ResetPassword;
