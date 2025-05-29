@@ -7,8 +7,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {responsiveHeight} from '../assets/Responsive_Dimensions';
 const Input = ({
   placeholder,
+  placeholderTxtColor,
   keyboardType,
   label,
+  color,
   isPassword,
   showPassword,
   onChangeText,
@@ -23,8 +25,10 @@ const Input = ({
           secureTextEntry={showPassword}
           keyboardType={keyboardType ? keyboardType : 'default'}
           placeholder={placeholder}
-          placeholderTextColor={Color.placeHolderTxt1}
-          style={styles.inputStyle}
+          placeholderTextColor={
+            placeholderTxtColor ? placeholderTxtColor : Color.placeHolderTxt1
+          }
+          style={[styles.inputStyle, {color: color ? color : Color.white}]}
         />
         {isPassword ? (
           <TouchableOpacity

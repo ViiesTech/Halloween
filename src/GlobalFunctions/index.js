@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import Geocoder from 'react-native-geocoding';
 
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  )
-}
-
-export default index
+export const getAddress = async (lng, lat) => {
+  try {
+    const geoResult = await Geocoder.from(lng, lat);
+    const address = geoResult.results[0].formatted_address;
+    return address;
+  } catch (error) {
+    console.warn('Error fetching address from coordinates:', error);
+    throw error;
+  }
+};

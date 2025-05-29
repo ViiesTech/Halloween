@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 2,
     borderRadius: responsiveHeight(3.5),
-    color: Color.white,
     width: responsiveWidth(85),
     padding: responsiveHeight(2),
     height: responsiveHeight(6.5),
@@ -38,7 +37,7 @@ export const styles = StyleSheet.create({
   },
 
   locationContainer: {
-    height: '100%',
+    height: responsiveHeight(7.5),
     paddingHorizontal: responsiveWidth(4),
     backgroundColor: Color.themeColor,
     alignItems: 'center',
@@ -157,14 +156,9 @@ export const styles = StyleSheet.create({
     color: Color.textLight,
     fontSize: responsiveFontSize(1.5),
     marginTop: responsiveHeight(0.7),
-    color: Color.textLight,
-    fontSize: responsiveFontSize(1.5),
-    marginTop: responsiveHeight(0.7),
+    width: responsiveWidth(33),
   },
   listingSemiHeading: {
-    color: Color.black,
-    fontSize: responsiveFontSize(1.8),
-    fontWeight: '400',
     color: Color.black,
     fontSize: responsiveFontSize(1.8),
     fontWeight: '400',
@@ -215,7 +209,7 @@ export const styles = StyleSheet.create({
     width: responsiveWidth(70),
     paddingHorizontal: responsiveHeight(2),
     zIndex: 10,
-    color:Color.black
+    color: Color.black,
   },
   headerIconStyle: {
     borderWidth: 1,
@@ -234,7 +228,7 @@ export const styles = StyleSheet.create({
   placeHolderStyle2: {
     color: Color.black,
     fontSize: responsiveFontSize(1.8),
-    fontWeight:'500'
+    fontWeight: '500',
   },
   orText: {
     color: Color.placeHolderTxt1,
@@ -250,6 +244,7 @@ export const styles = StyleSheet.create({
   },
   btnTxt: {
     color: Color.white,
+    textAlign: 'center',
     fontSize: responsiveFontSize(1.9),
   },
   socialButtonStyle: {

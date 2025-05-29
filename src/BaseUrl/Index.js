@@ -1,2 +1,2 @@
-export const BaseUrl = 'https://m88452t7-3010.inc1.devtunnels.ms/api/';
-
+export const BaseUrl = 'https://appsdemo.pro/Halloween/api/';
+export const ApiKey = 'AIzaSyA8roKrUBUJzWBySsm9v5ig05B_wJNY2hE';

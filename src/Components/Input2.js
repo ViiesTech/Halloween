@@ -1,5 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import React from 'react';
 import {Color} from '../assets/Utils/Colors';
 import {
@@ -8,10 +14,21 @@ import {
 } from '../assets/Responsive_Dimensions';
 import {styles} from '../Styles';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-const Input2 = ({placeholder, keyboardType, label, multiline, icon}) => {
+const Input2 = ({
+  placeholder,
+  keyboardType,
+  label,
+  multiline,
+  icon,
+  handlePress,
+  onChangeText,
+  value,
+  width,
+  isLoading,
+}) => {
   return (
     <View style={{gap: 5, marginTop: responsiveHeight(2)}}>
-      <Text style={styles.placeHolderStyle2}>{label}</Text>
+      {label && <Text style={styles.placeHolderStyle2}>{label}</Text>}
       <View
         style={{
           backgroundColor: Color.white,
@@ -30,6 +47,8 @@ const Input2 = ({placeholder, keyboardType, label, multiline, icon}) => {
           elevation: 5,
         }}>
         <TextInput
+          value={value}
+          onChangeText={e => onChangeText(e)}
           multiline={multiline}
           keyboardType={keyboardType ? keyboardType : 'default'}
           placeholder={placeholder}
@@ -41,13 +60,24 @@ const Input2 = ({placeholder, keyboardType, label, multiline, icon}) => {
             borderWidth: 2,
             borderRadius: responsiveHeight(3.5),
             color: Color.black,
-            width: responsiveWidth(85),
+            width: width ? responsiveWidth(width) : responsiveWidth(85),
             padding: responsiveHeight(2),
             height: multiline ? responsiveHeight(15) : responsiveHeight(6.5),
           }}
         />
-        {icon ? (
+        {isLoading ? (
+          <View
+            style={{
+              position: 'absolute',
+              right: 10,
+              justifyContent: 'center',
+              height: '100%',
+            }}>
+            <ActivityIndicator size={'small'} color={Color.black} />
+          </View>
+        ) : icon ? (
           <TouchableOpacity
+            onPress={handlePress}
             style={{
               position: 'absolute',
               right: 10,

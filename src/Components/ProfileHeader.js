@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {
@@ -11,8 +12,11 @@ import {styles} from '../Styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useSelector} from 'react-redux';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({handlePress}) => {
+  const {name} = useSelector(state => state.user.userData);
+
   return (
     <View style={styles.profileHeaderContainer}>
       <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
@@ -29,7 +33,7 @@ const ProfileHeader = () => {
               fontWeight: '500',
               fontSize: responsiveFontSize(2.2),
             }}>
-            John Doe
+            {name}
           </Text>
           <Text
             style={{
@@ -62,7 +66,7 @@ const ProfileHeader = () => {
           </View>
         </View>
       </View>
-      <TouchableOpacity style={styles.goContainer}>
+      <TouchableOpacity onPress={handlePress} style={styles.goContainer}>
         <Ionicons name="chevron-forward" size={25} color={Color.white} />
       </TouchableOpacity>
     </View>

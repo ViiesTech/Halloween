@@ -47,7 +47,6 @@ const Signup = ({navigation}) => {
       ShowToast('error', 'Passwords must be the same');
       return;
     }
-
     try {
       setIsLoading(true);
       const response = await Registeration(

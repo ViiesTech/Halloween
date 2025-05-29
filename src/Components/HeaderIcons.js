@@ -1,15 +1,14 @@
-import { TouchableOpacity } from 'react-native'
-import React from 'react'
-import { Color } from '../assets/Utils/Colors'
-import { responsiveHeight, responsiveWidth } from '../assets/Responsive_Dimensions'
-import { styles } from '../Styles'
+import {TouchableOpacity} from 'react-native';
+import React from 'react';
+import {Color} from '../assets/Utils/Colors';
+import {styles} from '../Styles';
 
-const HeaderIcons = ({iconName,Icon}) => {
+const HeaderIcons = ({iconName, Icon, handlePress}) => {
   return (
-    <TouchableOpacity style={styles.headerIconStyle}>
-    <Icon name={iconName} size={20} color={Color.themeColor}/>
+    <TouchableOpacity onPress={handlePress} style={styles.headerIconStyle}>
+      <Icon name={iconName} size={20} color={Color.themeColor} />
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default HeaderIcons
+export default HeaderIcons;

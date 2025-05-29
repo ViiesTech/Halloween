@@ -19,7 +19,7 @@ const IconContainer = ({
 }) => {
   return (
     <View style={styles[styleName]}>
-      <View style={{flex: 1, justifyContent: 'center'}}>
+      <View style={{height: responsiveHeight(7), justifyContent: 'center'}}>
         {Icon ? (
           <Icon name={iconName} size={iconSize} color={Color.white} />
         ) : (

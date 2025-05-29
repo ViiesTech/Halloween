@@ -1,9 +1,9 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HouseListing from '../screens/mainScreens/HouseListing';
 import ViewDetails from '../screens/mainScreens/ViewDetails';
-import CandyDetails from '../screens/mainScreens/CandyDetails';
-import { BottomTabs } from './BottomStack';
+import {BottomTabs} from './BottomStack';
 import Home from '../screens/mainScreens/Home';
+import ChooseLocation from '../screens/mainScreens/ChooseLocation';
+import Settings from '../screens/mainScreens/Settings';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +13,8 @@ export function MainStack() {
       <Stack.Screen name="BottomTabs" component={BottomTabs} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ViewDetails" component={ViewDetails} />
+      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="ChooseLocation" component={ChooseLocation} />
     </Stack.Navigator>
   );
 }

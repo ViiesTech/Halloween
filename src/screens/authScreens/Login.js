@@ -30,8 +30,6 @@ const Login = ({navigation}) => {
   });
   const {isLoading} = useSelector(state => state.user);
   const dispatch = useDispatch();
-  console.log('email', form.email);
-  console.log('password', form.password);
   const handleInputChange = (field, value) => {
     setForm(prev => ({...prev, [field]: value}));
   };
@@ -85,10 +83,10 @@ const Login = ({navigation}) => {
           <Text style={styles.orText}>Or</Text>
           <View style={{gap: responsiveHeight(2.5)}}>
             <SocialButtons title={'CONTINUE WITH GOOGLE'} iconName={'google'} />
-            <SocialButtons
+            {/* <SocialButtons
               title={'CONTINUE WITH FACEBOOK'}
               iconName={'facebook'}
-            />
+            /> */}
           </View>
         </View>
 

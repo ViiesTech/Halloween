@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -10,20 +11,30 @@ import {
   responsiveWidth,
 } from '../assets/Responsive_Dimensions';
 import {styles} from '../Styles';
+import {BaseUrl} from '../BaseUrl/Index';
+import axios from 'axios'
+import { useSelector } from 'react-redux';
+import moment from 'moment'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+const Post = ({data,  onLikePress,onCommentPress}) => {
+console.log('data',data);
+  
+  const userData = data.user_id
+  
+  const timeAgo = moment(data.createdAt).fromNow()
 
-const Post = ({data}) => {
+
+
   return (
     <View style={styles.postContainer}>
       <View style={{flexDirection: 'row', alignItems: 'center', gap: 15}}>
         <View>
-          <Image
-            source={data.profilePic}
-            style={{
-              height: responsiveHeight(6),
-              width: responsiveWidth(13),
-              borderRadius: 10,
-            }}
+          <Ionicons
+          name={"person"}
+          size={responsiveFontSize(4)}
+          color={Color.black}
           />
+      
         </View>
         <View>
           <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
@@ -33,51 +44,55 @@ const Post = ({data}) => {
                 fontSize: responsiveFontSize(2),
                 fontWeight: '500',
               }}>
-              {data.name}
+              {userData?.name}
             </Text>
-            <Text style={{color: Color.black, fontWeight: '300'}}>
-              added a new photo
-            </Text>
+         
           </View>
           <Text style={{color: Color.black, fontWeight: '450'}}>
-            {data.timeAgo}
+            {timeAgo}
           </Text>
         </View>
       </View>
 
       <View style={styles.captionPostCotainer}>
-        <Text style={styles.captionText}>{data.caption}</Text>
-        <Image source={data.post} style={styles.postImage} />
+        <Text style={styles.captionText}>{data.description}</Text>
+        <Image
+          source={{
+            uri: `https://appsdemo.pro/Halloween/${data.image[0]}`,
+          }}
+          style={styles.postImage}
+        />
       </View>
       <View style={styles.actionsContainer}>
         <View style={{flexDirection: 'row', gap: 15}}>
           <TouchableOpacity
+          onPress={onLikePress}
             style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
             <AntDesign name="like2" size={20} color={Color.black} />
-            <Text>{data.totalLikes}</Text>
+            <Text>{data?.like?.length}</Text>
           </TouchableOpacity>
           <TouchableOpacity
+          onPress={onCommentPress}
             style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
             <MaterialCommunityIcons
               name="comment-outline"
               size={20}
               color={Color.black}
             />
-            <Text>{data.totalComments}</Text>
+            <Text>{data?.comment?.length}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
             <MaterialCommunityIcons
               name="share-outline"
               size={20}
               color={Color.black}
             />
-
-            <Text>{data.totalShares}</Text>
-          </TouchableOpacity>
+            <Text>{data?.share?.length}</Text>
+          </TouchableOpacity> */}
         </View>
-        <TouchableOpacity>
-          <Entypo name="dots-three-vertical" size={20} color={Color.bl} />
+        <TouchableOpacity >
+          <Entypo name="dots-three-vertical" size={20} color={Color.black} />
         </TouchableOpacity>
       </View>
     </View>

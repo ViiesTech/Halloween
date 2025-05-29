@@ -1,3 +1,4 @@
+import 'react-native-get-random-values';
 import React from 'react';
 import {Routes} from './src/routes/routes';
 import {Provider} from 'react-redux';
