@@ -1,30 +1,37 @@
 /* eslint-disable react-native/no-inline-styles */
-import {ActivityIndicator, ScrollView, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {Color} from '../../assets/Utils/Colors';
+import {ActivityIndicator, ScrollView, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
+// import CountDown from 'react-native-countdown-component';
+import CountDown from 'react-native-countdown-fixed';
 import Header from '../../Components/Header';
 import Listings from '../../Components/Listings';
+import Hr from '../../Components/Hr';
+
+import {Color} from '../../assets/Utils/Colors';
 import {
   responsiveFontSize,
   responsiveHeight,
 } from '../../assets/Responsive_Dimensions';
-import Hr from '../../Components/Hr';
-import {useDispatch, useSelector} from 'react-redux';
-import {clearToken} from '../../redux/Slices';
+
 import {getAllCandyPost} from '../../GlobalFunctions/Apis';
-import {useIsFocused} from '@react-navigation/native';
-import CountDown from 'react-native-countdown-component';
+import {clearToken} from '../../redux/Slices';
 
 const HouseListing = ({navigation}) => {
   const dispatch = useDispatch();
   const {token} = useSelector(state => state.user);
   const [isLoading, setIsLoading] = useState(false);
-  // console.log('token', token);
+  const [data, setData] = useState([]);
+
+  const isFocused = useIsFocused();
+
   // useEffect(() => {
-  //   dispatch(clearToken());
-  // }, []);
-  const focus = useIsFocused();
-  const [data, setData] = useState();
+
+  // dispatch(clearToken())
+
+  // },[])
+
   const getSecondsUntilHalloween = () => {
     const now = new Date();
     const currentYear = now.getFullYear();
@@ -36,38 +43,42 @@ const HouseListing = ({navigation}) => {
 
     return Math.floor((halloween.getTime() - now.getTime()) / 1000);
   };
+
   const getCandyData = async () => {
     try {
       setIsLoading(true);
       const response = await getAllCandyPost(token);
-      setIsLoading(false);
-      setData(response.data.data);
+      setData(response.data?.data || []);
     } catch (error) {
+      console.log('Error fetching candy data:', error);
+    } finally {
       setIsLoading(false);
-      console.log('error', error);
     }
   };
 
   useEffect(() => {
     getCandyData();
-  }, [focus]);
+  }, [isFocused]);
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
+      removeClippedSubviews={false}
       contentContainerStyle={{
         flexGrow: 1,
         backgroundColor: Color.white,
         paddingBottom: responsiveHeight(2),
       }}>
-      <Header showAddress={true} />
+      <Header showAddress />
       <Hr />
+
       <Text
         style={{
           margin: responsiveHeight(2),
           marginTop: responsiveHeight(0.1),
           fontSize: responsiveFontSize(2.2),
           fontWeight: '600',
-          textAlign:'center',
+          textAlign: 'center',
         }}>
         Time Left Until Halloween
       </Text>
@@ -84,19 +95,18 @@ const HouseListing = ({navigation}) => {
       />
       {isLoading ? (
         <View style={{flex: 1, justifyContent: 'center'}}>
-          <ActivityIndicator size={'large'} color={Color.black} />
+          <ActivityIndicator size="large" color={Color.black} />
         </View>
       ) : (
-        data?.map(area => {
-          return (
-            <Listings
-              buttonPressHandler={() =>
-                navigation.navigate('ViewDetails', {data: area})
-              }
-              data={area}
-            />
-          );
-        })
+        data.map(area => (
+          <Listings
+            key={area.id || area._id} // Ensure you use a unique key
+            buttonPressHandler={() =>
+              navigation.navigate('ViewDetails', {data: area})
+            }
+            data={area}
+          />
+        ))
       )}
     </ScrollView>
   );

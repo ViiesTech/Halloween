@@ -157,7 +157,7 @@ const Groups = ({navigation}) => {
         styles.parentScrollContainer,
         {paddingBottom: 20},
       ]}>
-      <Header2 handlePress={() => navigation.goBack()} title={' Add Candy'} />
+      <Header2  title={' Add Candy'} />
       <View style={{paddingHorizontal: responsiveWidth(5.7)}}>
         <ChooseImage onImagesSelected={handleImagesFromChild} />
         {/* <Input2 */}

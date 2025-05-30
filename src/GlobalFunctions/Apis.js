@@ -1,6 +1,6 @@
 import {BaseUrl} from '../BaseUrl/Index';
 import axios from 'axios';
-import {UserLogin} from '../redux/Slices';
+import {setUserData, UserLogin} from '../redux/Slices';
 import {ShowToast} from './ShowToast';
 
 export const Registeration = async (name, email, password, parentNumber) => {
@@ -172,7 +172,13 @@ export const addHalloweenPost = async (
     throw error;
   }
 };
-export const editProfile = async (name, parentNumber, token) => {
+export const editProfile = async (
+  name,
+  parentNumber,
+  token,
+  dispatch,
+  navigation,
+) => {
   let data = JSON.stringify({
     name: name,
     Parent_Number: parentNumber,
@@ -192,9 +198,12 @@ export const editProfile = async (name, parentNumber, token) => {
     const response = await axios.request(config);
     if (response.data.success) {
       ShowToast('success', 'Profile Updated');
+      dispatch(setUserData(response.data.data));
+      navigation.navigate('BottomTabs');
     } else {
       ShowToast('error', response.data.message);
     }
+    console.log('response.data', response.data);
     return response.data;
   } catch (error) {
     console.log('error', error.response.data.message);

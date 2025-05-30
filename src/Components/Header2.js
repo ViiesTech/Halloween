@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -6,8 +7,10 @@ import {
   responsiveFontSize,
   responsiveWidth,
 } from '../assets/Responsive_Dimensions';
+import {useNavigation} from '@react-navigation/native';
 
-const Header2 = ({title, handlePress}) => {
+const Header2 = ({title}) => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -18,7 +21,7 @@ const Header2 = ({title, handlePress}) => {
         alignItems: 'center',
         justifyContent: 'space-between',
       }}>
-      <TouchableOpacity onPress={handlePress}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Ionicons name="chevron-back" size={23} color={Color.black} />
       </TouchableOpacity>
       <Text

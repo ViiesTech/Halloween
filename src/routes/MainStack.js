@@ -4,6 +4,7 @@ import {BottomTabs} from './BottomStack';
 import Home from '../screens/mainScreens/Home';
 import ChooseLocation from '../screens/mainScreens/ChooseLocation';
 import Settings from '../screens/mainScreens/Settings';
+import EditProfile from '../screens/mainScreens/EditProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export function MainStack() {
       <Stack.Screen name="ViewDetails" component={ViewDetails} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="ChooseLocation" component={ChooseLocation} />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
     </Stack.Navigator>
   );
 }

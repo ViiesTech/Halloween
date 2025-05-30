@@ -36,8 +36,7 @@ const Login = ({navigation}) => {
   const loginHandler = async () => {
     const {email, password} = form;
     if (!email || !password) {
-      ShowToast('error', 'Please fill all required fields');
-      return;
+     return ShowToast('error', 'Please fill all required fields');
     }
     try {
       const response = await LoginIntegration(email, password, dispatch);

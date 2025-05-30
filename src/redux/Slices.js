@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
-import { ShowToast } from '../GlobalFunctions/ShowToast';
+import {ShowToast} from '../GlobalFunctions/ShowToast';
 
 // Initial State
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
 // Async Thunk
 export const UserLogin = createAsyncThunk(
   'auth/UserLogin',
-  async (config, { rejectWithValue }) => {
+  async (config, {rejectWithValue}) => {
     try {
       const response = await axios.request(config);
       console.log('response===>>>', JSON.stringify(response.data));
@@ -24,14 +24,18 @@ export const UserLogin = createAsyncThunk(
         ShowToast('success', 'Login Successful');
         return response.data;
       } else {
+        ShowToast('error', response.data.message);
         return rejectWithValue('Login failed');
       }
     } catch (error) {
       console.log('error', error);
-      ShowToast('error', error?.response?.data?.message || 'Something went wrong');
+      ShowToast(
+        'error',
+        error?.response?.data?.message || 'Something went wrong',
+      );
       return rejectWithValue('Something went wrong');
     }
-  }
+  },
 );
 
 // Redux Slice
@@ -39,9 +43,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    clearToken: (state) => {
+    clearToken: (state, action) => {
       state.token = '';
-      state.userData = {};
+      // state.userData = {};
     },
     setToken: (state, action) => {
       state.token = action.payload;
@@ -50,9 +54,9 @@ const authSlice = createSlice({
       state.userData = action.payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(UserLogin.pending, (state) => {
+      .addCase(UserLogin.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
@@ -69,5 +73,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { clearToken, setUserData, setToken } = authSlice.actions;
+export const {clearToken, setUserData, setToken} = authSlice.actions;
 export default authSlice.reducer;

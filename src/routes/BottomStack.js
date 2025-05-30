@@ -1,6 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react/react-in-jsx-scope */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useState} from 'react';
-import Home from '../screens/mainScreens/Home';
 import ScaryStories from '../screens/mainScreens/ScaryStories';
 import Groups from '../screens/mainScreens/Groups';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -11,7 +14,6 @@ import {
   responsiveWidth,
 } from '../assets/Responsive_Dimensions';
 import HouseListing from '../screens/mainScreens/HouseListing';
-import ViewDetails from '../screens/mainScreens/ViewDetails';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Text, View} from 'react-native';
 
@@ -93,14 +95,13 @@ export function BottomTabs() {
                 borderRadius: 10,
                 borderBottomRightRadius: 0,
                 justifyContent: 'center',
-                alignItems: 'center',
                 height: responsiveHeight(5),
                 width: responsiveWidth(27),
               }}>
               {focused && (
                 <Ionicons name="grid-outline" size={25} color={Color.white} />
               )}
-
+              // eslint-disable-next-line react/react-in-jsx-scope
               <Text
                 style={{
                   color: Color.white,
@@ -127,7 +128,6 @@ export function BottomTabs() {
                 borderRadius: 10,
                 borderBottomRightRadius: 0,
                 justifyContent: 'center',
-                alignItems: 'center',
                 height: responsiveHeight(5),
                 width: responsiveWidth(27),
                 // padding: 10,

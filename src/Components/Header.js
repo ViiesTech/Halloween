@@ -34,7 +34,8 @@ const Header = ({
   const {name, Parent_Number} = useSelector(state => state.user.userData);
   const [locationLoading, setLocationLoading] = useState(false);
   const navigation = useNavigation();
-
+  const userdata = useSelector(state => state.user.userData);
+  console.log('userdata', userdata);
   const getCurrentLocation = async () => {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -117,7 +118,11 @@ const Header = ({
         ) : null}
 
         <Text
-          style={{color: Color.themeColor, fontSize: responsiveFontSize(2.5)}}>
+          style={{
+            color: Color.themeColor,
+            fontSize: responsiveFontSize(2.5),
+            width: responsiveWidth(35),
+          }}>
           Hey {name},
         </Text>
       </View>

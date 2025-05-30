@@ -1,44 +1,73 @@
 /* eslint-disable eslint-comments/no-unused-disable */
 /* eslint-disable react-native/no-inline-styles */
-import {View, Text, FlatList} from 'react-native';
-import React from 'react';
+import {View, Text, FlatList, TouchableOpacity, Alert} from 'react-native';
+import React, {useEffect} from 'react';
 import {Color} from '../../assets/Utils/Colors';
 import Header from '../../Components/Header';
 import Header2 from '../../Components/Header2';
 import {
   responsiveFontSize,
   responsiveHeight,
+  responsiveWidth,
 } from '../../assets/Responsive_Dimensions';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import SvgIcons from '../../Components/SvgIcons';
+import {arrowForward} from '../../assets/icons';
+import {clearToken} from '../../redux/Slices';
 
-const Settings = () => {
+const Settings = ({navigation}) => {
   const {userData} = useSelector(state => state.user);
+  const dispatch = useDispatch();
   const data = [
     {
       id: 1,
-      title: 'Categories',
-      subTitle: 'Category 1, Category 2, Category 3',
+      title: 'Edit Profile',
     },
     {
       id: 2,
-      title: 'Location',
-      subTitle: 'New York',
-    },
-    {
-      id: 3,
-      title: 'Hotel Type',
-      subTitle: 'Hotel 1',
-    },
-    {
-      id: 4,
-      title: 'Language',
-      subTitle: 'English',
+      title: 'Log Out',
     },
   ];
   console.log('userdata', userData);
+
+  // useEffect(() => {
+
+  //   handleLogout()
+
+  // },[])
+
+  const handleLogout = () => {
+    Alert.alert(
+      'Logout',
+      'Are you sure you want to logout?',
+      [
+        {
+          text: 'No',
+          onPress: () => console.log('Logout cancelled'),
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => {
+            //  dispatch(clearToken(''))
+            console.log('User logged out');
+            dispatch(clearToken(''));
+          },
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
   const renderItem = ({item}) => {
     return (
-      <TouchableOpacity style={{}}>
+      <TouchableOpacity
+        onPress={() =>
+          item.title === 'Log Out'
+            ? handleLogout()
+            : navigation.navigate('EditProfile')
+        }
+        style={{paddingVertical: responsiveHeight(0.5)}}>
         <View style={{marginTop: 10}}>
           <View
             style={{
@@ -47,15 +76,21 @@ const Settings = () => {
               justifyContent: 'space-between',
             }}>
             <View style={{gap: 5}}>
-              <NormalText color="#282A37" title={item.title} />
-              <NormalText color="#515A77" title={item.subTitle} />
+              <Text
+                style={{
+                  color: '#000',
+                  fontSize: responsiveFontSize(2.1),
+                  fontWeight: '500',
+                }}>
+                {item.title}
+              </Text>
             </View>
             <SvgIcons xml={arrowForward} height={15} width={15} />
           </View>
           <View
             style={{
               height: 2,
-              width: responsiveWidth(100),
+              // width: responsiveWidth(100),
               backgroundColor: '#ECEDF1',
               marginTop: 13,
             }}
@@ -70,7 +105,11 @@ const Settings = () => {
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <FlatList
           data={data}
-          contentContainerStyle={{marginTop: responsiveHeight(2)}}
+          removeClippedSubviews={false}
+          contentContainerStyle={{
+            marginTop: responsiveHeight(2),
+            paddingHorizontal: responsiveHeight(2.5),
+          }}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
         />
